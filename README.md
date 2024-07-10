@@ -34,8 +34,8 @@ A aplicação é separada pelos seguintes conteineres
     Procedimentos de Instação da aplicação para uso local
 
 1- Baixar repositório 
-    - git clone https://github.com/brunocaramelo/library_api.git
-        - renomear .env.docker-compose para .env
+    - git clone https://github.com/brunocaramelo/sample_user_app_spa.git
+        - copiar .env.docker-compose para .env
 
 2 - Verificar se as portas 443, 8000 e 3306 estão ocupadas.
 
@@ -95,4 +95,8 @@ A aplicação é separada pelos seguintes conteineres
 Após instalar o endereço de acesso é:
 
 - https://localhost/
+
+- usuario criado no seed:
+    - email: admin@test.com
+    - senha: password
 
