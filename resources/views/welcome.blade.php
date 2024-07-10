@@ -18,12 +18,18 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+
         <script src="https://cdn.tailwindcss.com"></script>
+
     </head>
     <body class="antialiased">
         <div id="app">
             <App />
         </div>
+
         @vite('resources/js/app.js')
+
+        {{-- <script src="{{ asset('build/assets/app-B8BAgUr0.js') }}"></script> --}}
+
     </body>
 </html>
