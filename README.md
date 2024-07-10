@@ -38,7 +38,11 @@ A aplicação é separada pelos seguintes conteineres
     - git clone https://github.com/brunocaramelo/sample_user_app_spa.git
         - copiar .env.docker-compose para .env
 
-2 - Verificar se as portas 443(nginx),9000(php-fpm), 3306(mysql) e 6380(redis) estão ocupadas.
+2 - Verificar se as portas 
+    - 443(nginx),9000(php-fpm)
+    - 3306(mysql) 
+    -6380(redis) 
+    estão ocupadas.
 
 3 - Entrar no diretório base da aplicação e executar os comandos abaixo:
     
