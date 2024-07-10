@@ -36,7 +36,10 @@ A aplicação é separada pelos seguintes conteineres
 
 1- Baixar repositório 
     - git clone https://github.com/brunocaramelo/sample_user_app_spa.git
-        - copiar .env.docker-compose para .env
+       
+        devemos copiar .env.docker-compose para .env exemplo:
+
+        - cp .env.docker-compose .env
 
 2 - Verificar se as portas:
 
