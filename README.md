@@ -7,14 +7,14 @@ Esta aplicação conta com as seguintes especificações abaixo:
 
 | Ferramenta | Versão |
 | --- | --- |
-| Docker | 1.13.1 |
-| Docker Compose | 1.22.0 |
-| Nginx | 1.15.2 |
+| Docker | 24.0.7, |
+| Docker Compose | 1.29.2 |
+| Nginx | 1.19.10 |
 | PHP | 8.3.9 |
-| Mariabd | 10.3.8 |
+| Mariabd | 10.11.3 |
 | Redis | 5.0.0 |
 | Sqlite | 3.16.2 |
-| Laravel Framework | 11.0.* |
+| Laravel Framework | 11.14.* |
 
 A aplicação é separada pelos seguintes conteineres
 
@@ -22,7 +22,8 @@ A aplicação é separada pelos seguintes conteineres
 | --- | --- |
 | mysql | mariadb:latest |
 | redis | redis:alpine |
-| php | laravel:php-fpm |
+| php | php-sample |
+| php-worker | php-sample-worker-queue |
 | web (nginx) | nginx:alpine |
 
 ## Requisitos
@@ -37,7 +38,7 @@ A aplicação é separada pelos seguintes conteineres
     - git clone https://github.com/brunocaramelo/sample_user_app_spa.git
         - copiar .env.docker-compose para .env
 
-2 - Verificar se as portas 443, 8000 e 3306 estão ocupadas.
+2 - Verificar se as portas 443(nginx),9000(php-fpm), 3306(mysql) e 6380(redis) estão ocupadas.
 
 3 - Entrar no diretório base da aplicação e executar os comandos abaixo:
     

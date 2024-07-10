@@ -26,6 +26,8 @@ services:
       dockerfile: ./docker/php8-fpm/Dockerfile
     image: sampleapitest-app:v4.0
     container_name: php-sample
+    ports:
+      - "9000:9000"
     depends_on:
       - redis
       - mysql
@@ -106,7 +108,6 @@ services:
       - ./public/build/assets:/app/public/build/assets
       - .:/app:rw
     ports:
-      - 80:80
       - 443:443
 
 volumes:
