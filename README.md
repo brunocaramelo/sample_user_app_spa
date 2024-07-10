@@ -15,16 +15,17 @@ Esta aplicação conta com as seguintes especificações abaixo:
 | Redis | 5.0.0 |
 | Sqlite (Testes de unidade) | 3.16.2 |
 | Laravel Framework | 11.14.* |
+| VueJS | 3.0.* |
 
 A aplicação é separada pelos seguintes conteineres
 
-| Service | Image |
-| --- | --- |
-| mysql | mariadb:latest |
-| redis | redis:alpine |
-| php | php-sample |
-| php-worker | php-sample-worker-queue |
-| web (nginx) | nginx:alpine |
+| Service | Image | Motivação
+| --- | --- | --- |
+| mysql | mariadb:latest | Banco de dados Principal |
+| redis | redis:alpine | Armazenamento de fila de eventos |
+| php | php-sample | Aplicação Principal (Web) |
+| php-worker | php-sample-worker-queue | Processamento da fila de eventos (novo cadastro/esqueci minha senha) |
+| web (nginx) | nginx:alpine | Web Server |
 
 ## Requisitos
     - Docker
@@ -128,3 +129,8 @@ Após instalar o endereço de acesso é:
     - Unit Tests
 
     - Docker e docker-compose
+
+## Observação
+
+   Para ver o funcionamento do envio de emails basta configurar no arquivo .env os itens: MAIL_MAILER,
+            MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD,MAIL_ENCRYPTION
