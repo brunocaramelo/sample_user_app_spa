@@ -20,4 +20,7 @@ RUN rm -rf /etc/nginx/conf.d/default.conf
 
 WORKDIR /app
 
+RUN ls -la public/build/assets
+RUN ls -la /app
+
 CMD ["nginx", "-g", "daemon off;"]

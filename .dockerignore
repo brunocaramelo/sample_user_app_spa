@@ -1,7 +1,0 @@
-data/*
-**/*node_modules
-
-Dockerfile
-docker-compose.yml
-run
-run.ps1
