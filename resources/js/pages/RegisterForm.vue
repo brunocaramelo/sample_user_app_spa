@@ -152,12 +152,12 @@ export default {
     margin-bottom: 15px;
 }
 
-.form-group label class="block mb-2 text-sm font-medium" {
+.form-group label {
     display: block;
     margin-bottom: 5px;
 }
 
-.form-group input class="w-full p-2 border rounded shadow-sm focus:ring-2 focus:ring-blue-500" {
+.form-group input {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
