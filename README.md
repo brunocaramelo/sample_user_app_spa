@@ -37,7 +37,7 @@ A aplicação é separada pelos seguintes conteineres
 1- Baixar repositório 
     - git clone https://github.com/brunocaramelo/sample_user_app_spa.git
        
-        devemos copiar .env.docker-compose para .env exemplo:
+        devemos copiar .env.docker-compose para .env com o comando abaixo:
 
         - cp .env.docker-compose .env
 
@@ -114,3 +114,17 @@ Após instalar o endereço de acesso é:
     - email: admin@test.com
     - senha: password
 
+
+## Detalhes
+
+    - Vue 3
+
+    - Laravel 11
+
+    - Sanctum
+
+    - SOLID
+
+    - Unit Tests
+
+    - Docker e docker-compose
