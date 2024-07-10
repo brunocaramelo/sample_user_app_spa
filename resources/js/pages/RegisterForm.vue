@@ -93,6 +93,11 @@ export default {
             })
             .catch(error => {
                 this.messageError = error.response.data.message;
+
+                this.street = null;
+                this.city = null;
+                this.state =  null;
+                this.neighborhood = null;
             })
         },
         submitForm() {

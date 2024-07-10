@@ -6,7 +6,7 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-WdK-Tx6l.js",
+    "file": "assets/app-j-dU75Wr.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -21,7 +21,7 @@
     ]
   },
   "resources/js/pages/HomePage.vue": {
-    "file": "assets/HomePage-rEfipYB8.js",
+    "file": "assets/HomePage-CD5kM5R9.js",
     "name": "HomePage",
     "src": "resources/js/pages/HomePage.vue",
     "isDynamicEntry": true,
@@ -30,7 +30,7 @@
     ]
   },
   "resources/js/pages/LoginForm.vue": {
-    "file": "assets/LoginForm-DvGzmiyq.js",
+    "file": "assets/LoginForm-BAaYCa5S.js",
     "name": "LoginForm",
     "src": "resources/js/pages/LoginForm.vue",
     "isDynamicEntry": true,
@@ -42,7 +42,7 @@
     ]
   },
   "resources/js/pages/RegisterForm.vue": {
-    "file": "assets/RegisterForm-Cocqh8uV.js",
+    "file": "assets/RegisterForm-Bsro_b97.js",
     "name": "RegisterForm",
     "src": "resources/js/pages/RegisterForm.vue",
     "isDynamicEntry": true,
@@ -54,7 +54,7 @@
     ]
   },
   "resources/js/pages/RememberPassword.vue": {
-    "file": "assets/RememberPassword-DiAKMmg1.js",
+    "file": "assets/RememberPassword-BvmLMMKk.js",
     "name": "RememberPassword",
     "src": "resources/js/pages/RememberPassword.vue",
     "isDynamicEntry": true,
