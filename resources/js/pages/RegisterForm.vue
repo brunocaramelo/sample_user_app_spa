@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label class="block mb-2 text-sm font-medium" for="confirm_password">Confirmar Senha:</label class="block mb-2 text-sm font-medium">
-                <input class="w-full p-2 border rounded shadow-sm focus:ring-2 focus:ring-blue-500" name="confirm_password" type="confirm_password" id="confirm_password" v-model="confirm_password" >
+                <input class="w-full p-2 border rounded shadow-sm focus:ring-2 focus:ring-blue-500" name="confirm_password" type="password" id="confirm_password" v-model="confirm_password" >
             </div>
 
             <div class="form-group">
