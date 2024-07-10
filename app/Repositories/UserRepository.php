@@ -37,7 +37,7 @@ class UserRepository implements UserInterface
         $person = $user->person()->create([
             'name' => $data['name'],
             'lastname' => $data['lastname'],
-            'cep' => $data['cep'],
+            'cep' => str_replace([' ','-'],['',''], $data['cep']),
             'street' => $data['street'],
             'city' => $data['city'],
             'street_number' => $data['street_number'],

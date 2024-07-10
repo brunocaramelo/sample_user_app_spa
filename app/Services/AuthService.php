@@ -43,10 +43,10 @@ class AuthService
         $userInst = $this->userRepository->findByEmail($email)[0] ?? null;
 
         if (($userInst->id ?? null) == null) {
-            throw new UserNotFoundException('Email nao localizado');
+            throw new UserNotFoundException('Email não localizado');
         }
 
-        $user = $this->userRepository->update($data, $userInst->id);
+        $this->userRepository->update($data, $userInst->id);
 
         event(new UserRememberPassword($userInst, $data['password']));
 
