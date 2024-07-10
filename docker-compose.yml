@@ -31,25 +31,25 @@ services:
       - mysql
     command: bash -c "php artisan migrate && php-fpm"
     environment:
-      APP_KEY: base64:a89Bj62VIrzfDCsb3m8BNU+JedVKtEZEmqif25fR2g0=
-      APP_ENV: local
-      DB_CONNECTION: mysql
-      DB_PORT: 3306
-      DB_USERNAME: sandbox
-      DB_DATABASE: simple_user_area
-      DB_PASSWORD: sandbox
-      DB_HOST: mysql
-      MYSQL_HOST: mysql
-      REDIS_HOST: redis
-      REDIS_PORT: 6380
-      REDIS_PASSWORD: testes
+      APP_KEY: ${APP_KEY}
+      APP_ENV: ${APP_ENV}
+      DB_CONNECTION: ${DB_CONNECTION}
+      DB_PORT: ${DB_PORT}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      MYSQL_HOST: ${MYSQL_HOST}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
       DEBUG: 1
-      REDIS_CLIENT: predis
-      QUEUE_CONNECTION: redis
-      CACHE_DRIVER: redis
-      SESSION_DRIVER: redis
-      LOG_CHANNEL: stderr
-      LOG_STDERR_FORMATTER: Monolog\Formatter\JsonFormatter
+      REDIS_CLIENT: ${REDIS_CLIENT}
+      QUEUE_CONNECTION: ${QUEUE_CONNECTION}
+      CACHE_DRIVER: ${CACHE_DRIVER}
+      SESSION_DRIVER: ${SESSION_DRIVER}
+      LOG_CHANNEL: ${LOG_CHANNEL}
+      LOG_STDERR_FORMATTER: ${LOG_STDERR_FORMATTER}
     links:
       - mysql
       - redis
@@ -66,25 +66,25 @@ services:
       - mysql
     command: sh -c "php /app/artisan queue:work --verbose --tries=7 --timeout=90"
     environment:
-      APP_KEY: base64:a89Bj62VIrzfDCsb3m8BNU+JedVKtEZEmqif25fR2g0=
-      APP_ENV: local
-      DB_CONNECTION: mysql
-      DB_PORT: 3306
-      DB_USERNAME: sandbox
-      DB_DATABASE: simple_user_area
-      DB_PASSWORD: sandbox
-      DB_HOST: mysql
-      MYSQL_HOST: mysql
-      REDIS_HOST: redis
-      REDIS_PORT: 6380
-      REDIS_PASSWORD: testes
+      APP_KEY: ${APP_KEY}
+      APP_ENV: ${APP_ENV}
+      DB_CONNECTION: ${DB_CONNECTION}
+      DB_PORT: ${DB_PORT}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      MYSQL_HOST: ${MYSQL_HOST}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
       DEBUG: 1
-      QUEUE_CONNECTION: redis
-      REDIS_CLIENT: predis
-      CACHE_DRIVER: redis
-      SESSION_DRIVER: redis
-      LOG_CHANNEL: stderr
-      LOG_STDERR_FORMATTER: Monolog\Formatter\JsonFormatter
+      QUEUE_CONNECTION: ${QUEUE_CONNECTION}
+      REDIS_CLIENT: ${REDIS_CLIENT}
+      CACHE_DRIVER: ${CACHE_DRIVER}
+      SESSION_DRIVER: ${SESSION_DRIVER}
+      LOG_CHANNEL: ${LOG_CHANNEL}
+      LOG_STDERR_FORMATTER: ${LOG_STDERR_FORMATTER}
     links:
       - mysql
       - redis

@@ -1,66 +1,98 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SIMPLES APLICACAO DE USUARIO
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## Especificações Técnicas
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Esta aplicação conta com as seguintes especificações abaixo: 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Ferramenta | Versão |
+| --- | --- |
+| Docker | 1.13.1 |
+| Docker Compose | 1.22.0 |
+| Nginx | 1.15.2 |
+| PHP | 8.3.9 |
+| Mariabd | 10.3.8 |
+| Redis | 5.0.0 |
+| Sqlite | 3.16.2 |
+| Laravel Framework | 11.0.* |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+A aplicação é separada pelos seguintes conteineres
 
-## Learning Laravel
+| Service | Image |
+| --- | --- |
+| mysql | mariadb:latest |
+| redis | redis:alpine |
+| php | laravel:php-fpm |
+| web (nginx) | nginx:alpine |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Requisitos
+    - Docker
+    - Docker Daemon (Service)
+    - Docker Compose
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Procedimentos de Instalação
+    Procedimentos de Instação da aplicação para uso local
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1- Baixar repositório 
+    - git clone https://github.com/brunocaramelo/library_api.git
+        - renomear .env.docker-compose para .env
 
-## Laravel Sponsors
+2 - Verificar se as portas 443, 8000 e 3306 estão ocupadas.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3 - Entrar no diretório base da aplicação e executar os comandos abaixo:
+    
+    1 - sudo docker-compose up -d; (LER OBSERVACAO)
 
-### Premium Partners
+    2 - sudo docker exec -t php-sample php /app/artisan migrate;
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+    3 - sudo docker exec -t php-sample php /app/artisan db:seed;
 
-## Contributing
+    4 - sudo docker exec -t php-sample ./vendor/bin/phpunit;
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    
+### Descrição dos Passos
 
-## Code of Conduct
+    1 -  para que as imagens sejam armazenandas e executadas e subir as instancias
+        
+        (OBSERVACAO) - devido a demora do composer em trazer as dependências, existem 3 alternativas,
+        
+            1 - EXECUTAR sudo docker-compose up; sem ser daemon a primeira vez, para que seja possivel verificar o andamento da instalação de dependências.
+            
+            2 - Aguardar uns 20 minutos ou pouco mais para que o comando seja efetivado. afim de evitar de autoload por exemplo.
+            
+            3 - Caso tenha algum problema de Depencias, executar o comando abaixo para garantir as mesmas.
+                sudo docker exec -t php-sample composer install;
+    
+    2 -  para que o framework gere e aplique o mapeamento para a base de dados (SQL) podendo ser Mysql, PostGres , Oracle , SQL Serve ou SQLITE por exemplo
+    
+    3 -  para que o framework  aplique mudanças nos dados da base, no caso inserção de um primeiro usuário.
+    
+    4 -  geração de hash key para uso do sistema como chave de validação.
+    
+    5 - para que o framework execute a suite de testes.
+        - testes de API  
+        - testes de unidade
+     
+### Resolução de possíveis problemas:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### Problemas com dependências/autoload (Passo 1)
+    devido a demora do composer em trazer as dependências, existem 3 alternativas,
+        
+            1 - EXECUTAR sudo docker-compose up; sem ser daemon a primeira vez, para que seja possivel verificar o andamento da instalação de dependências.
+            
+            2 - Aguardar uns 20 minutos ou pouco mais para que o comando seja efetivado. afim de evitar erros de autoload por exemplo.
+            
+            3 - Caso tenha algum problema de Depencias, executar o comando abaixo para garantir as mesmas.
+                sudo docker exec -t php-sample composer install;
 
-## Security Vulnerabilities
+#### Problemas com permissão do Webserver ao volume exposto (Passo 6)
+    - O mesmo pode ter problemas de permissão do Webserver ao volume /var/www/html (ou subdiretórios)
+      Mesmo não sendo indicado, mas por ser um ambiente local, pode ser feita a execução forçada de permissões com:
+       - sudo docker-compose exec web chmod 777 -R /var/www/html    
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Pós Instalação
 
-## License
+Após instalar o endereço de acesso é:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- https://localhost/
+
