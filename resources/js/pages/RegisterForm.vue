@@ -76,7 +76,8 @@ export default {
             street_number: '',
             state: '',
             neighborhood: '',
-            messageError: ''
+            messageError: '',
+            messageSuccess: ''
         }
     },
     methods: {
@@ -117,7 +118,7 @@ export default {
             .then(response => {
                 this.messageError = null;
 
-                this.messageSuccess = response.data.message+' ..redirecionando para login';
+                this.messageSuccess = 'Usuario criado com sucesso ..redirecionando para login';
 
                 setTimeout(() => {
                     this.$router.push('/login')
