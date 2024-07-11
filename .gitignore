@@ -1,5 +1,6 @@
 /.phpunit.cache
 /node_modules
+/docker/docker-compose-env/*.env
 # /public/build
 /public/hot
 /public/storage

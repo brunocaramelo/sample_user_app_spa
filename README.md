@@ -40,7 +40,8 @@ A aplicação é separada pelos seguintes conteineres
        
         devemos copiar .env.docker-compose para .env com o comando abaixo:
 
-        - cp .env.docker-compose .env
+        - cp docker-compose-env/application.env.example docker-compose-env/application.env
+        - cp docker-compose-env/database.env.example docker-compose-env/database.env
 
 2 - Verificar se as portas:
 
@@ -109,7 +110,7 @@ A aplicação é separada pelos seguintes conteineres
 
 Após instalar o endereço de acesso é:
 
-- https://localhost/
+- https://localhost
 
 - usuario criado no seed:
     - email: admin@test.com

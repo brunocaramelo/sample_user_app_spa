@@ -8,12 +8,8 @@ services:
       - mysql-data:/var/lib/mysql:rw
     ports:
       - "3306:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=testes
-      - MYSQL_DATABASE=simple_user_area
-      - MYSQL_USER=sandbox
-      - MYSQL_PASSWORD=sandbox
-
+    env_file:
+      - docker/docker-compose-env/database.env
   redis:
     image: redis:alpine
     container_name: redis-sample
@@ -33,26 +29,8 @@ services:
       - redis
       - mysql
     command: bash -c "php artisan migrate && php-fpm"
-    environment:
-      APP_KEY: ${APP_KEY}
-      APP_ENV: ${APP_ENV}
-      DB_CONNECTION: ${DB_CONNECTION}
-      DB_PORT: ${DB_PORT}
-      DB_USERNAME: ${DB_USERNAME}
-      DB_DATABASE: ${DB_DATABASE}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_HOST: ${DB_HOST}
-      MYSQL_HOST: ${MYSQL_HOST}
-      REDIS_HOST: ${REDIS_HOST}
-      REDIS_PORT: ${REDIS_PORT}
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
-      DEBUG: 1
-      REDIS_CLIENT: ${REDIS_CLIENT}
-      QUEUE_CONNECTION: ${QUEUE_CONNECTION}
-      CACHE_DRIVER: ${CACHE_DRIVER}
-      SESSION_DRIVER: ${SESSION_DRIVER}
-      LOG_CHANNEL: ${LOG_CHANNEL}
-      LOG_STDERR_FORMATTER: ${LOG_STDERR_FORMATTER}
+    env_file:
+      - docker/docker-compose-env/application.env
     links:
       - mysql
       - redis
@@ -69,26 +47,8 @@ services:
       - mysql
     command: sh -c "php /app/artisan queue:work --verbose --tries=7 --timeout=90"
     restart: on-failure
-    environment:
-      APP_KEY: ${APP_KEY}
-      APP_ENV: ${APP_ENV}
-      DB_CONNECTION: ${DB_CONNECTION}
-      DB_PORT: ${DB_PORT}
-      DB_USERNAME: ${DB_USERNAME}
-      DB_DATABASE: ${DB_DATABASE}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_HOST: ${DB_HOST}
-      MYSQL_HOST: ${MYSQL_HOST}
-      REDIS_HOST: ${REDIS_HOST}
-      REDIS_PORT: ${REDIS_PORT}
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
-      DEBUG: 1
-      QUEUE_CONNECTION: ${QUEUE_CONNECTION}
-      REDIS_CLIENT: ${REDIS_CLIENT}
-      CACHE_DRIVER: ${CACHE_DRIVER}
-      SESSION_DRIVER: ${SESSION_DRIVER}
-      LOG_CHANNEL: ${LOG_CHANNEL}
-      LOG_STDERR_FORMATTER: ${LOG_STDERR_FORMATTER}
+    env_file:
+      - docker/docker-compose-env/application.env
     links:
       - mysql
       - redis

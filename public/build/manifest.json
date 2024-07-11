@@ -6,7 +6,7 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-DyWE2DH0.js",
+    "file": "assets/app-CbRfr_mp.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -14,6 +14,7 @@
       "resources/js/pages/LoginForm.vue",
       "resources/js/pages/RegisterForm.vue",
       "resources/js/pages/RememberPassword.vue",
+      "resources/js/pages/HomePage.vue",
       "resources/js/pages/HomePage.vue"
     ],
     "css": [
@@ -21,7 +22,7 @@
     ]
   },
   "resources/js/pages/HomePage.vue": {
-    "file": "assets/HomePage-DOnVIvej.js",
+    "file": "assets/HomePage-BG2imoa6.js",
     "name": "HomePage",
     "src": "resources/js/pages/HomePage.vue",
     "isDynamicEntry": true,
@@ -30,7 +31,7 @@
     ]
   },
   "resources/js/pages/LoginForm.vue": {
-    "file": "assets/LoginForm-Rq-UyuZ9.js",
+    "file": "assets/LoginForm-Q8ra88VU.js",
     "name": "LoginForm",
     "src": "resources/js/pages/LoginForm.vue",
     "isDynamicEntry": true,
@@ -42,7 +43,7 @@
     ]
   },
   "resources/js/pages/RegisterForm.vue": {
-    "file": "assets/RegisterForm-DPwkYL2_.js",
+    "file": "assets/RegisterForm-CAM72psE.js",
     "name": "RegisterForm",
     "src": "resources/js/pages/RegisterForm.vue",
     "isDynamicEntry": true,
@@ -54,7 +55,7 @@
     ]
   },
   "resources/js/pages/RememberPassword.vue": {
-    "file": "assets/RememberPassword-D4nvIOsA.js",
+    "file": "assets/RememberPassword-DWMzNEmN.js",
     "name": "RememberPassword",
     "src": "resources/js/pages/RememberPassword.vue",
     "isDynamicEntry": true,
