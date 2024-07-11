@@ -57,7 +57,7 @@ A aplicação é separada pelos seguintes conteineres
 
 3 - Entrar no diretório base da aplicação e executar os comandos abaixo:
     
-    1 - sudo docker-compose up -d; (LER OBSERVACAO)
+    1 - sudo docker-compose up -d;
 
     2 - sudo docker exec -t php-sample php /app/artisan migrate;
 
