@@ -101,9 +101,9 @@ A aplicação é separada pelos seguintes conteineres
                 sudo docker exec -t php-sample composer install;
 
 #### Problemas com permissão do Webserver ao volume exposto (Passo 6)
-    - O mesmo pode ter problemas de permissão do Webserver ao volume /var/www/html (ou subdiretórios)
+    - O mesmo pode ter problemas de permissão do Webserver ao volume /app (ou subdiretórios)
       Mesmo não sendo indicado, mas por ser um ambiente local, pode ser feita a execução forçada de permissões com:
-       - sudo docker-compose exec web chmod 777 -R /var/www/html    
+       - sudo docker-compose exec web chmod 777 -R /app    
 
 ## Pós Instalação
 
