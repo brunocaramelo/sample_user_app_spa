@@ -100,6 +100,7 @@ services:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
     container_name: nginx-sample
+    restart: on-failure
     depends_on:
       - php
     volumes_from:
