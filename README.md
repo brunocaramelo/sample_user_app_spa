@@ -40,8 +40,8 @@ A aplicação é separada pelos seguintes conteineres
        
         devemos copiar .env.docker-compose para .env com o comando abaixo:
 
-        - cp docker-compose-env/application.env.example docker-compose-env/application.env
-        - cp docker-compose-env/database.env.example docker-compose-env/database.env
+        - cp docker/docker-compose-env/application.env.example docker/docker-compose-env/application.env
+        - cp docker/docker-compose-env/database.env.example docker/docker-compose-env/database.env
 
 2 - Verificar se as portas:
 
