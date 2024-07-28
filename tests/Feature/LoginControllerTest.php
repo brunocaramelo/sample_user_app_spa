@@ -15,6 +15,7 @@ class LoginControllerTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
+        \Artisan::call('migrate');
         \Artisan::call('db:seed');
     }
 
