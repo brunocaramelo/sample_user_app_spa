@@ -1,11 +1,11 @@
-# SIMPLES APLICACAO DE USUARIO
+# SIMPLE USER APPLICATION
 
 
-## Especificações Técnicas
+## Technical specifications
 
-Esta aplicação conta com as seguintes especificações abaixo: 
+This application has the following specifications: 
 
-| Ferramenta | Versão |
+| Tool | Version |
 | --- | --- |
 | Docker | 24.0.7, |
 | Docker Compose | 1.29.2 |
@@ -13,37 +13,37 @@ Esta aplicação conta com as seguintes especificações abaixo:
 | PHP | 8.3.9 |
 | Mariabd | 10.11.3 |
 | Redis | 5.0.0 |
-| Sqlite (Testes de unidade) | 3.16.2 |
+| Sqlite (Unit Tests) | 3.16.2 |
 | Laravel Framework | 11.14.* |
 | VueJS | 3.0.* |
 
-A aplicação é separada pelos seguintes conteineres
+The application is separated into the following containers
 
-| Service | Image | Motivação
+| Service | Image | Motivation
 | --- | --- | --- |
-| mysql | mariadb:latest | Banco de dados Principal |
-| redis | redis:alpine | Armazenamento de fila de eventos |
-| php | php-sample | Aplicação Principal (Web) |
-| php-worker | php-sample-worker-queue | Processamento da fila de eventos (novo cadastro/esqueci minha senha) |
+| mysql | mariadb:latest | Main database |
+| redis | redis:alpine | Event queue storage |
+| php | php-sample | Main Application (Web) |
+| php-worker | php-sample-worker-queue | Event queue processing (new registration / forgot password) |
 | web (nginx) | nginx:alpine | Web Server |
 
-## Requisitos
+## Requirements
     - Docker
     - Docker Daemon (Service)
     - Docker Compose
 
-## Procedimentos de Instalação
-    Procedimentos de Instação da aplicação para uso local
+## Installation procedures
+    Procedures for installing the application for local use
 
-1- Baixar repositório 
+1- Download repository 
     - git clone https://github.com/brunocaramelo/sample_user_app_spa.git
        
-        devemos copiar .env.docker-compose para .env com o comando abaixo:
+        we must copy .env.docker-compose to .env with the command below:
 
         - cp docker/docker-compose-env/application.env.example docker/docker-compose-env/application.env
         - cp docker/docker-compose-env/database.env.example docker/docker-compose-env/database.env
 
-2 - Verificar se as portas:
+2 - Check that the ports:
 
     - 443 (nginx) 
     
@@ -52,10 +52,10 @@ A aplicação é separada pelos seguintes conteineres
     - 3306(mysql) 
 
     - 6380(redis) 
-     estão ocupadas.
+     are busy.
 
 
-3 - Entrar no diretório base da aplicação e executar os comandos abaixo:
+3 - Enter the application's home directory and execute the following commands:
     
     1 - docker-compose up -d;
 
@@ -66,58 +66,58 @@ A aplicação é separada pelos seguintes conteineres
     4 - docker exec -t php-sample ./vendor/bin/phpunit;
 
     
-### Descrição dos Passos (em caso de problemas)
+### Description of steps (in case of problems)
 
-    1 -  para que as imagens sejam armazenandas e executadas e subir as instancias
+    1 - so that the images are stored and executed and the instances are uploaded
         
-        (OBSERVACAO) - devido a demora do composer em trazer as dependências, existem 3 alternativas,
+        (NOTE) - due to the composer's delay in bringing in the dependencies, there are 3 alternatives,
         
-            1 - EXECUTAR sudo docker-compose up; sem ser daemon a primeira vez, para que seja possivel verificar o andamento da instalação de dependências.
+            1 - RUN sudo docker-compose up; without being a daemon the first time, so that you can check the progress of the installation of dependencies.
             
-            2 - Aguardar uns 20 minutos ou pouco mais para que o comando seja efetivado. afim de evitar de autoload por exemplo.
+            2 - Wait 20 minutes or so for the command to be executed, to avoid autoloading for example.
             
-            3 - Caso tenha algum problema de Depencias, executar o comando abaixo para garantir as mesmas.
+            3 - If you have any problems with dependencies, run the command below to secure them.
                 sudo docker exec -t php-sample composer install;
     
-    2 -  para que o framework gere e aplique o mapeamento para a base de dados (SQL) podendo ser Mysql, PostGres , Oracle , SQL Serve ou SQLITE por exemplo
+    2 - for the framework to generate and apply the mapping for the database (SQL), which can be Mysql, PostGres, Oracle, SQL Serve or SQLITE for example.
     
-    3 -  para que o framework  aplique mudanças nos dados da base, no caso inserção de um primeiro usuário.
+    3 - for the framework to apply changes to the database data, in the case of inserting a first user.
     
-    4 -  geração de hash key para uso do sistema como chave de validação.
+    4 - generation of a hash key for use by the system as a validation key.
     
-    5 - para que o framework execute a suite de testes.
-        - testes de API  
-        - testes de unidade
+    5 - for the framework to run the test suite.
+        - API tests  
+        - Unit tests
      
-### Resolução de possíveis problemas:
+### Resolution of possible problems:
 
-#### Problemas com dependências/autoload (Passo 1)
-    devido a demora do composer em trazer as dependências, existem 3 alternativas,
+#### Problems with dependencies/autoload (Step 1)
+    Due to the delay in composer bringing up the dependencies, there are 3 alternatives,
         
-            1 - EXECUTAR sudo docker-compose up; sem ser daemon a primeira vez, para que seja possivel verificar o andamento da instalação de dependências.
+            1 - RUN sudo docker-compose up; without being a daemon the first time, so that you can check the progress of the installation of dependencies.
             
-            2 - Aguardar uns 20 minutos ou pouco mais para que o comando seja efetivado. afim de evitar erros de autoload por exemplo.
+            2 - Wait 20 minutes or so for the command to run, in order to avoid autoload errors, for example.
             
-            3 - Caso tenha algum problema de Depencias, executar o comando abaixo para garantir as mesmas.
+            3 - If you have any problems with dependencies, run the command below to secure them.
                 sudo docker exec -t php-sample composer install;
 
-#### Problemas com permissão do Webserver ao volume exposto (Passo 6)
-    - O mesmo pode ter problemas de permissão do Webserver ao volume /app (ou subdiretórios)
-      Mesmo não sendo indicado, mas por ser um ambiente local, pode ser feita a execução forçada de permissões com:
+#### Problems with Webserver permission to the exposed volume (Step 6)
+    - You may also have problems with Webserver permission to the /app volume (or subdirectories)
+      Even though it's not indicated, but because it's a local environment, you can force the execution of permissions with:
        - sudo docker-compose exec web chmod 777 -R /app    
 
-## Pós Instalação
+## Post Installation
 
-Após instalar o endereço de acesso é:
+After installation, the access address is:
 
 - https://localhost
 
-- usuario criado no seed:
+- user created in seed:
     - email: admin@test.com
-    - senha: password
+    - password: password
 
 
-## Detalhes
+## Details
 
     - Vue 3
 
@@ -129,9 +129,9 @@ Após instalar o endereço de acesso é:
 
     - Unit Tests
 
-    - Docker e docker-compose
+    - Docker and docker-compose
 
-## Observação
+## Note
 
-   Para ver o funcionamento do envio de emails basta configurar no arquivo .env os itens: MAIL_MAILER,
+   To see how sending emails works, just configure the items in the .env file: MAIL_MAILER,
             MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD,MAIL_ENCRYPTION
