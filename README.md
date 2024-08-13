@@ -3,6 +3,10 @@
 
 ## Technical specifications
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4e0ecb8eadad4d5e96d6da43d8a97342)](https://app.codacy.com/gh/brunocaramelo/sample_user_app_spa/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/4e0ecb8eadad4d5e96d6da43d8a97342)](https://app.codacy.com/gh/brunocaramelo/sample_user_app_spa/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
+
 This application has the following specifications: 
 
 | Tool | Version |
