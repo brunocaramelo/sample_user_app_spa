@@ -1,9 +1,7 @@
-version: '2'
-
 services:
   mysql:
     image: mariadb:latest
-    container_name: mysql-sample
+    container_name: mysql-sample-user
     volumes:
       - mysql-data:/var/lib/mysql:rw
     ports:
@@ -21,7 +19,7 @@ services:
       context: .
       dockerfile: ./docker/php8-fpm/Dockerfile
     image: sampleapitest-app:v4.0
-    container_name: php-sample
+    container_name: php-sample-user
     restart: on-failure
     ports:
       - "9000:9000"
@@ -41,7 +39,7 @@ services:
       context: .
       dockerfile: ./docker/php8-fpm/Dockerfile
     image: sampleapiotra:php-worker-queue
-    container_name: php-sample-worker-queue
+    container_name: php-sample-user-worker-queue
     depends_on:
       - redis
       - mysql
@@ -55,25 +53,33 @@ services:
     volumes:
       - .:/app:rw
 
-  web:
+  webserver:
     build:
       context: .
-      dockerfile: ./docker/nginx/Dockerfile
-    container_name: nginx-sample
+      dockerfile: ./docker/webserver/dockerfile/webserver.dockerfile
+    container_name: webserver-sample-user
     restart: on-failure
-    depends_on:
-      - php
-    volumes_from:
-      - php
     volumes:
-      - ./docker/nginx/default:/etc/nginx/conf.d/default.conf
-      - ./docker/nginx/certs:/etc/nginx/certs
-      - ./public/build/assets:/app/public/build/assets
+     - .:/app:rw
+     - composer-vendor-data:/app/vendor:rw
+     - vite-compiled-data:/app/public/build:rw
+     - ./docker/webserver/startup/startup.sh:/app/startup.sh
     ports:
-      - 443:443
+      - 80:80
+      - 8003:8003
+    depends_on:
+      - mysql
+      - redis
+    env_file:
+      - docker/docker-compose-env/application.env
+    links:
+      - mysql
+      - redis
 
 volumes:
-  frontendbuild-data:
+  composer-vendor-data:
+    driver: "local"
+  vite-compiled-data:
     driver: "local"
   redis-data:
     driver: "local"

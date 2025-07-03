@@ -1,0 +1,44 @@
+
+https://0.0.0.0 {
+    root * /app/public
+
+    try_files {path} {path}/index.php /index.php
+
+    php_fastcgi unix//run/php-fpm/www.sock {
+        # Opcional: Variáveis de ambiente adicionais para o PHP-FPM.
+        # env APP_ENV production
+        # env APP_KEY base64:seuAppKeyAqui
+        # env DB_CONNECTION mysql
+        # env DB_HOST db
+        # env DB_PORT 3306
+        # env DB_DATABASE your_database
+        # env DB_USERNAME your_user
+        # env DB_PASSWORD your_password
+    }
+
+    encode gzip zstd
+
+}
+
+
+
+http://0.0.0.0:${WEBSERVER_PORT} {
+    root * /app/public
+
+    try_files {path} {path}/index.php /index.php
+
+    php_fastcgi unix//run/php-fpm/www.sock {
+        # Opcional: Variáveis de ambiente adicionais para o PHP-FPM.
+        # env APP_ENV production
+        # env APP_KEY base64:seuAppKeyAqui
+        # env DB_CONNECTION mysql
+        # env DB_HOST db
+        # env DB_PORT 3306
+        # env DB_DATABASE your_database
+        # env DB_USERNAME your_user
+        # env DB_PASSWORD your_password
+    }
+
+    encode gzip zstd
+
+}

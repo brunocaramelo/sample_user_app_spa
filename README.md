@@ -13,8 +13,8 @@ This application has the following specifications:
 | --- | --- |
 | Docker | 24.0.7, |
 | Docker Compose | 1.29.2 |
-| Nginx | 1.19.10 |
 | PHP | 8.3.9 |
+| WEBSERVER (FRANKENPHP) | 8.3.9 |
 | Mariabd | 10.11.3 |
 | Redis | 5.0.0 |
 | Sqlite (Unit Tests) | 3.16.2 |
@@ -29,7 +29,7 @@ The application is separated into the following containers
 | redis | redis:alpine | Event queue storage |
 | php | php-sample | Main Application (Web) |
 | php-worker | php-sample-worker-queue | Event queue processing (new registration / forgot password) |
-| web (nginx) | nginx:alpine | Web Server |
+| webserver | frankenphp | Web Server |
 
 ## Requirements
     - Docker
@@ -49,7 +49,7 @@ The application is separated into the following containers
 
 2 - Check that the ports:
 
-    - 443 (nginx) 
+    - 443 (webserver) 
     
     - 9000(php-fpm)
 
@@ -63,11 +63,11 @@ The application is separated into the following containers
     
     1 - docker-compose up -d;
 
-    2 - docker exec -t php-sample php /app/artisan migrate;
+    2 - docker compose exec webserver php /app/artisan migrate;
 
-    3 - docker exec -t php-sample php /app/artisan db:seed;
+    3 - docker compose exec webserver php /app/artisan db:seed;
 
-    4 - docker exec -t php-sample ./vendor/bin/phpunit;
+    4 - docker compose exec webserver ./vendor/bin/phpunit;
 
     
 ### Description of steps (in case of problems)

@@ -1,0 +1,3 @@
+document_root: /app/public
+router: /index.php
+workers: auto
