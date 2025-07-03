@@ -14,26 +14,6 @@ services:
     command: ['redis-server', '--bind','0.0.0.0','--requirepass', 'testes','--port','6380']
     volumes:
       - redis-data:/data
-  php:
-    build:
-      context: .
-      dockerfile: ./docker/php8-fpm/Dockerfile
-    image: sampleapitest-app:v4.0
-    container_name: php-sample-user
-    restart: on-failure
-    ports:
-      - "9000:9000"
-    depends_on:
-      - redis
-      - mysql
-    command: bash -c "php artisan migrate && php-fpm"
-    env_file:
-      - docker/docker-compose-env/application.env
-    links:
-      - mysql
-      - redis
-    volumes:
-     - .:/app:rw
   worker-queue:
     build:
       context: .
